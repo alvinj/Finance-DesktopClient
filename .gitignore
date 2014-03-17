@@ -1,0 +1,6 @@
+.DS_Store
+.architect
+.sass-cache/
+.sencha
+build/
+ext/

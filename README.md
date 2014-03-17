@@ -1,7 +1,7 @@
 Finance
 =======
 
-This is the client-side component of a 'Finance' application I'm building.
+This is the "desktop client" of a 'Finance' application I'm building.
 
 The code is based on the book, Mastering Ext JS, so you'll see a lot of
 'Packt' code in this codebase, at least initially. As I learn more about

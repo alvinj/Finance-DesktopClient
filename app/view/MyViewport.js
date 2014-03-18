@@ -1,11 +1,11 @@
-Ext.define('Packt.view.MyViewport', {
+Ext.define('Finance.view.MyViewport', {
     extend: 'Ext.container.Viewport',
     alias: 'widget.mainviewport',
 
     requires: [
-        'Packt.view.Header',
+        'Finance.view.Header',
         'Packt.view.menu.Accordion',
-        'Packt.view.MainPanel'
+        'Finance.view.MainPanel'
     ],
 
     layout: {
@@ -33,7 +33,7 @@ Ext.define('Packt.view.MyViewport', {
             region: 'south',
             height: 30,
             style: 'border-top: 1px solid #4c72a4;',
-            html: '<div id="titleHeader"><center><span style="font-size:10px;">Mastering ExtJS book - Loiane Groner - http://packtpub.com</span></center></div>'
+            html: '<div id="titleHeader"><center><span style="font-size:10px;">Mastering ExtJS book - Loiane Groner</span></center></div>'
         }
     ]
 });

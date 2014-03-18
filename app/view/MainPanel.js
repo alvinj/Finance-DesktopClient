@@ -1,4 +1,4 @@
-Ext.define('Packt.view.MainPanel', {
+Ext.define('Finance.view.MainPanel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.mainpanel',
 

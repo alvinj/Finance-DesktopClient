@@ -4,7 +4,7 @@ Ext.define('Finance.controller.Login', {
     requires: [
         'Packt.util.MD5',
         'Packt.util.Alert',
-        'Packt.view.MyViewport',
+        'Finance.view.MyViewport',
         'Packt.util.Util',
         'Packt.util.SessionMonitor'
     ],
@@ -84,7 +84,7 @@ Ext.define('Finance.controller.Login', {
                         //Packt.util.Alert.msg('Success!', 'User Authenticated.');
                         
                         login.close();
-                        Ext.create('Packt.view.MyViewport');
+                        Ext.create('Finance.view.MyViewport');
                         Packt.util.SessionMonitor.start();
 
                     } else {

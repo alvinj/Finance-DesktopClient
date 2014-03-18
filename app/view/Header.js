@@ -1,4 +1,4 @@
-Ext.define('Packt.view.Header', {
+Ext.define('Finance.view.Header', {
     extend: 'Ext.toolbar.Toolbar',
     alias: 'widget.appheader',
 

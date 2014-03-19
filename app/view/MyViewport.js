@@ -4,7 +4,7 @@ Ext.define('Finance.view.MyViewport', {
 
     requires: [
         'Finance.view.Header',
-        'Packt.view.menu.Accordion',
+        'Finance.view.menu.Menu',
         'Finance.view.MainPanel'
     ],
 

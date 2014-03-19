@@ -2,7 +2,15 @@ Ext.define('Finance.controller.Menu', {
     extend: 'Ext.app.Controller',
 
     views: [
-        'menu.Menu'
+        'menu.Menu',
+        'StockList'
+    ],
+
+    refs: [
+        {
+            ref: 'mainPanel',
+            selector: 'mainpanel'
+        }
     ],
 
     init: function(application) {
@@ -15,17 +23,34 @@ Ext.define('Finance.controller.Menu', {
 
             "basic-panels button#watchList": {
                 click: this.onWatchListButtonClick
-            }
+            },
 
+            "basic-panels button#research": {
+                click: this.onResearchButtonClick
+            }
         });
     },
 
     onMyStocksButtonClick: function(button, event, options) {
         console.log('You clicked My-Stocks');
+
+        var mainPanel = this.getMainPanel();
+        var newTab = mainPanel.add({
+            xtype: 'stockList',
+            closable: true,
+            iconCls: 'stockList',
+            title: 'Your Stocks'
+        });
+
+        mainPanel.setActiveTab(newTab);
     },
 
     onWatchListButtonClick: function(button, event, options) {
         console.log('You clicked Watch-List');
+    },
+
+    onResearchButtonClick: function(button, event, options) {
+        console.log('You clicked Research');
     }
 
 });

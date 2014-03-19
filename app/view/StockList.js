@@ -1,19 +1,27 @@
 Ext.define('Finance.view.StockList', {
-    extend: 'Ext.container.Container',
+    extend: 'Ext.grid.Panel',
     alias: 'widget.stockList',
 
-    layout: {
-        type: 'hbox',
-        align: 'stretch'
-    },
+    frame: true,
+    store: Ext.create('Finance.store.Stocks'),
 
-    items: [
+    columns: [
         {
-            html: '<a href="#">Item 1</a>'
+            width: 50,
+            dataIndex: 'id',
+            text: 'ID'
         },
         {
-            html: '<a href="#">Item 2</a>'
+            width: 150,
+            dataIndex: 'symbol',
+            text: 'Symbol'
+        },
+        {
+            width: 200,
+            dataIndex: 'companyName',
+            flex: 1,
+            text: 'Company'
         }
     ]
-
 });
+

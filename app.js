@@ -21,23 +21,25 @@ Ext.application({
     
     requires: [
     //     'Finance.view.Login'
-    //     'Ext.menu.Menu',
-    //     'Ext.form.Panel',
+        'Ext.menu.Menu',
+        'Ext.form.Panel',
+        'Ext.form.Label',
+        'Ext.data.proxy.Ajax',
+        'Ext.form.FieldSet',
+        'Ext.form.field.Hidden',
+        'Ext.form.field.ComboBox',
+        'Ext.form.field.File',
+        'Ext.grid.plugin.CellEditing',
+        'Ext.grid.column.Date',
+        'Ext.grid.column.Action',
+        'Ext.form.CheckboxGroup',
+        'Ext.layout.container.Border',
+        'Ext.ux.grid.FiltersFeature',
+        'Finance.store.Stocks'                     // put here so it's loaded asynchronously
     //     'Ext.layout.container.Accordion',
-    //     'Ext.form.Label',
     //     'Packt.store.security.Permissions',
     //     'Packt.store.security.Users',
     //     'Packt.util.Util',
-    //     'Ext.data.proxy.Ajax',
-    //     'Ext.form.FieldSet',
-    //     'Ext.form.field.Hidden',
-    //     'Ext.form.field.ComboBox',
-    //     'Ext.form.field.File',
-    //     'Ext.grid.plugin.CellEditing',
-    //     'Ext.ux.grid.FiltersFeature',
-    //     'Ext.grid.column.Date',
-    //     'Ext.grid.column.Action',
-    //     'Ext.form.CheckboxGroup'
     ],
 
     views: [
@@ -47,12 +49,13 @@ Ext.application({
     ],
 
     // stores: [
-    //     'security.Permissions'
+    //     'Stocks'
     // ],
 
     controllers: [
         'Login',
-         'Menu'
+        'Menu',
+        'Stocks'
         // 'Main'
         // 'TranslationManager',
         // 'security.Groups',

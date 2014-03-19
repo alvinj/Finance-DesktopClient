@@ -37,7 +37,7 @@ Ext.define('Finance.controller.Menu', {
         var mainPanel = this.getMainPanel();
         var newTab = mainPanel.add({
             xtype: 'stockList',
-            closable: true,
+            closable: true,         // tab can be closed
             iconCls: 'stockList',
             title: 'Your Stocks'
         });

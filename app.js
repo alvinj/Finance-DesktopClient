@@ -51,9 +51,9 @@ Ext.application({
     // ],
 
     controllers: [
-        'Login'
+        'Login',
+         'Menu'
         // 'Main'
-        // 'Menu',
         // 'TranslationManager',
         // 'security.Groups',
         // 'security.Users'

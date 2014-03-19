@@ -1,11 +1,8 @@
 Ext.define('Finance.view.menu.Menu', {
     extend: 'Ext.Container',
     alias: 'widget.mainmenu',
-    xtype: 'basic-panels',
+    xtype: 'basic-panels',      // TODO needs better name; update controller when changing
     width: 300,
-    // requires: [
-    //     'Ext.layout.container.Table'
-    // ],
 
     // layout types: http://dev.sencha.com/deploy/ext-4.0.0/examples/layout-browser/layout-browser.html
     layout: {
@@ -13,11 +10,6 @@ Ext.define('Finance.view.menu.Menu', {
         align: 'stretch',
         pack: 'start'
     },
-    // layout: {
-    //     type: 'table',
-    //     columns: 1,
-    //     tdAttrs: { style: 'padding: 10px;' }
-    // },
 
     defaults: {
         xtype: 'panel',
@@ -31,16 +23,19 @@ Ext.define('Finance.view.menu.Menu', {
             {
                 xtype: 'button',
                 itemId: 'myStocks',
+                iconCls: 'myStocks',  // `iconCls` renders this classname in the output
                 text: 'My Stocks'
             },
             {
                 xtype: 'button',
                 itemId: 'watchList',
+                iconCls: 'watchList',
                 text: 'Watch List'
             },
             {
                 xtype: 'button',
                 itemId: 'research',
+                iconCls: 'research',
                 text: 'Research'
             },
             {

@@ -35,7 +35,8 @@ Ext.application({
         'Ext.form.CheckboxGroup',
         'Ext.layout.container.Border',
         'Ext.ux.grid.FiltersFeature',
-        'Finance.store.Stocks'                     // put here so it's loaded asynchronously
+        'Finance.store.Stocks',                     // put here so it's loaded asynchronously
+        'Finance.view.StockForm'
     //     'Ext.layout.container.Accordion',
     //     'Packt.store.security.Permissions',
     //     'Packt.store.security.Users',

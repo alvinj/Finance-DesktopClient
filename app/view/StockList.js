@@ -22,6 +22,32 @@ Ext.define('Finance.view.StockList', {
             flex: 1,
             text: 'Company'
         }
+    ],
+
+    dockedItems: [
+        {
+            xtype: 'toolbar',
+            flex: 1,
+            dock: 'top',
+            items: [
+                {
+                    // the controller automagically picks up the button click event
+                    // by referencing the '#add' class
+                    xtype: 'button',
+                    text: 'Add',
+                    itemId: 'add',
+                    iconCls: 'add',
+                }
+                // add more buttons here as needed ...
+            ]
+        }
     ]
+
 });
+
+
+
+
+
+
 

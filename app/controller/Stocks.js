@@ -34,6 +34,9 @@ Ext.define('Finance.controller.Stocks', {
             'stockList button#add': {
                 click: this.onAddStockButtonClicked
             },
+            'stockList button#delete': {
+                click: this.onDeleteStockButtonClicked
+            },
             'stockform button#cancel': { // handle click on the StockForm cancel button
                 click: this.onAddStockFormCancelClicked
             },
@@ -86,7 +89,7 @@ Ext.define('Finance.controller.Stocks', {
         button.up('window').close();
     },
 
-    // TODO - WORKING
+    // add a stock
     onAddStockFormSaveClicked: function(button, event, options) {
         var win = button.up('window'),
         formPanel = win.down('form'),
@@ -120,6 +123,51 @@ Ext.define('Finance.controller.Stocks', {
                             Ext.Msg.alert('Failure', action.result.msg);
                    }
                 }
+            });
+        }
+    },
+
+    // delete one or more stocks
+    onDeleteStockButtonClicked: function (button, e, options) {
+        var grid = this.getStockList(),
+            record = grid.getSelectionModel().getSelection(), 
+            store = grid.getStore();
+
+        if (store.getCount() >= 2 && record[0]) {
+            Ext.Msg.show({
+                 title:'Delete?',
+                 msg: 'Are you sure you want to delete?',
+                 buttons: Ext.Msg.YESNO,
+                 icon: Ext.Msg.QUESTION,
+                 fn: function (buttonId){
+                    if (buttonId == 'yes'){
+                        Ext.Ajax.request({
+                            url: 'php/security/deleteUser.php',
+                            params: {
+                                id: record[0].get('id')
+                            },
+                            success: function(conn, response, options, eOpts) {
+                                var result = Packt.util.Util.decodeJSON(conn.responseText);
+                                if (result.success) {
+                                    Packt.util.Alert.msg('Success!', 'User deleted.');
+                                    store.load();
+                                } else {
+                                    Packt.util.Util.showErrorMsg(conn.responseText);
+                                }
+                            },
+                            failure: function(conn, response, options, eOpts) {
+                                Packt.util.Util.showErrorMsg(conn.responseText);
+                            }
+                        });
+                    }
+                 }
+            });
+        } else if (store.getCount() == 1) {
+            Ext.Msg.show({
+                title:'Warning',
+                msg: 'You cannot delete all the users from the application.',
+                buttons: Ext.Msg.OK,
+                icon: Ext.Msg.WARNING
             });
         }
     },

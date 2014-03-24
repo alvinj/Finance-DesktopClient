@@ -33,7 +33,7 @@ Ext.define('Finance.view.MyViewport', {
             region: 'south',
             height: 30,
             style: 'border-top: 1px solid #4c72a4;',
-            html: '<div id="titleHeader"><center><span style="font-size:10px;">Mastering ExtJS book - Loiane Groner</span></center></div>'
+            html: '<div id="titleHeader"><center><span style="font-size:10px;">Finance</span></center></div>'
         }
     ]
 });

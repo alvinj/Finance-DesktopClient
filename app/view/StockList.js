@@ -32,13 +32,18 @@ Ext.define('Finance.view.StockList', {
             items: [
                 {
                     // the controller automagically picks up the button click event
-                    // by referencing the '#add' class
+                    // by referencing the '#add' class (or possibly the 'add' itemId)
                     xtype: 'button',
                     text: 'Add',
                     itemId: 'add',
-                    iconCls: 'add',
+                    iconCls: 'add'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Delete',
+                    itemId: 'delete',
+                    iconCls: 'delete'
                 }
-                // add more buttons here as needed ...
             ]
         }
     ]

@@ -133,23 +133,24 @@ Ext.define('Finance.controller.Stocks', {
             record = grid.getSelectionModel().getSelection(), 
             store = grid.getStore();
 
-        if (store.getCount() >= 2 && record[0]) {
+        if (store.getCount() >= 1 && record[0]) {
+            var idToDelete = record[0].get('id');
             Ext.Msg.show({
                  title:'Delete?',
-                 msg: 'Are you sure you want to delete?',
+                 msg: 'Are you sure you want to delete ID(' + idToDelete + ')?',
                  buttons: Ext.Msg.YESNO,
                  icon: Ext.Msg.QUESTION,
                  fn: function (buttonId){
                     if (buttonId == 'yes'){
                         Ext.Ajax.request({
-                            url: 'php/security/deleteUser.php',
+                            url: 'php/deletestock.php',
                             params: {
-                                id: record[0].get('id')
+                                id: idToDelete
                             },
                             success: function(conn, response, options, eOpts) {
                                 var result = Packt.util.Util.decodeJSON(conn.responseText);
                                 if (result.success) {
-                                    Packt.util.Alert.msg('Success!', 'User deleted.');
+                                    Packt.util.Alert.msg('Success', 'The stock was deleted.');
                                     store.load();
                                 } else {
                                     Packt.util.Util.showErrorMsg(conn.responseText);
@@ -162,10 +163,10 @@ Ext.define('Finance.controller.Stocks', {
                     }
                  }
             });
-        } else if (store.getCount() == 1) {
+        } else {
             Ext.Msg.show({
-                title:'Warning',
-                msg: 'You cannot delete all the users from the application.',
+                title:'Dude',
+                msg: 'Dude, you need to select at least one stock.',
                 buttons: Ext.Msg.OK,
                 icon: Ext.Msg.WARNING
             });

@@ -29,17 +29,26 @@ Ext.define('Finance.controller.Stocks', {
             'stockList': {
                 render: this.onRender
             },
-            // TODO i hate this, but it works
+            // TODO i hate this approach of looking up components by name, but it works,
+            // and seems to be preferred
             'stockList button#add': {
                 click: this.onAddStockButtonClicked
             },
-            // the StockForm cancel button
-            'stockform button#cancel': {
+            'stockform button#cancel': { // handle click on the StockForm cancel button
                 click: this.onAddStockFormCancelClicked
             },
-            // the StockForm save button
-            'stockform button#save': {
+            'stockform button#save': { //handle click on the StockForm save button
                 click: this.onAddStockFormSaveClicked
+            },
+            // 'companyName' refers to the itemId
+            'stockform textfield#companyName': { //handle Enter on the companyName textfield
+                keypress: this.onStockFormKeyPress
+            },
+            'stockform textfield#symbol': { //handle Enter on the symbol textfield
+                keypress: this.onStockFormKeyPress
+            },
+            'stockform textfield#symbol': { //handle blur event on the symbol textfield
+                blur: this.onStockFormSymbolFieldBlur
             }
         });
 
@@ -50,6 +59,17 @@ Ext.define('Finance.controller.Stocks', {
 
     onRender: function(component, options) {
         component.getStore().load();
+    },
+
+    // what is 'this' in this case?
+    onStockFormKeyPress: function(textfield, event, options) {
+        if(event.getKey() == event.ENTER) {
+            Ext.Msg.alert('Keys','You pressed the Enter key');
+        }
+    },
+
+    onStockFormSymbolFieldBlur: function(textfield, event, options) {
+        textfield.setValue(textfield.getValue().toUpperCase());
     },
 
     /**
@@ -101,7 +121,7 @@ Ext.define('Finance.controller.Stocks', {
                    }
                 }
             });
-        } 
+        }
     },
 
     dumpObject: function(obj) {

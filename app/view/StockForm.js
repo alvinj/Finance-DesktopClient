@@ -35,15 +35,29 @@ Ext.define('Finance.view.StockForm', {
                 {
                     fieldLabel: 'Symbol',
                     name: 'symbol',
+                    itemId: 'symbol',
                     allowBlank: false,
-                    maskRe: /[A-Z]/,    // uppercase only
-                    maxLength: 10
+                    maxLength: 10,
+                    enableKeyEvents: true,      // needed to handle the [Enter] key
+                    maskRe: /([a-zA-Z0-9]+)$/   // only allow letters and numbers, no spaces
                 },
                 {
                     fieldLabel: 'Company Name',
                     name: 'companyName',
+                    itemId: 'companyName',     // the controller refers to this itemId as: 'stockform textfield#companyName'
                     allowBlank: false,
-                    maxLength: 100
+                    maxLength: 100,
+                    enableKeyEvents: true      // needed to handle the [Enter] key
+                    // this works, but doesn't fit the current programming pattern
+                    // (from http://www.phs4j.com/2011/05/how-to-process-the-enter-key-with-extjs/)
+                    // listeners:{
+                    //     scope: this,
+                    //     specialkey: function(f,e) {
+                    //         if(e.getKey()==e.ENTER) {
+                    //             Ext.Msg.alert('Keys','You pressed the Enter key');
+                    //         }
+                    //     }
+                    // }
                 }
             ]
         }

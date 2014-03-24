@@ -9,11 +9,11 @@ Ext.define('Finance.store.Stocks', {
 
     proxy: {
         type: 'ajax',
-        url: 'php/mystocks.php',
+        url: 'php/stocks.php',
 
         reader: {
-            type: 'json',
-            root: 'data'
+            type: 'json'
+            // root: 'data'
         }
     },
 

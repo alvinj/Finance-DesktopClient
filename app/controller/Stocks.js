@@ -75,7 +75,7 @@ Ext.define('Finance.controller.Stocks', {
         if (formPanel.getForm().isValid()) {
             formPanel.getForm().submit({
                 clientValidation: true,
-                url: 'php/saveStock.php',
+                url: 'php/stockssave.php',
                 success: function(form, action) {
                     var result = action.result;
                     console.log(result);

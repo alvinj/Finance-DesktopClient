@@ -28,6 +28,12 @@ Ext.define('Finance.view.menu.Menu', {
             },
             {
                 xtype: 'button',
+                itemId: 'transactions',
+                iconCls: 'transactions',
+                text: 'Transactions'
+            },
+            {
+                xtype: 'button',
                 itemId: 'watchList',
                 iconCls: 'watchList',
                 text: 'Watch List'

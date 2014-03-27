@@ -21,6 +21,10 @@ Ext.define('Finance.controller.Menu', {
                 click: this.onMyStocksButtonClick
             },
 
+            "basic-panels button#transactions": {
+                click: this.onTransactionsButtonClick
+            },
+
             "basic-panels button#watchList": {
                 click: this.onWatchListButtonClick
             },
@@ -31,9 +35,19 @@ Ext.define('Finance.controller.Menu', {
         });
     },
 
-    onMyStocksButtonClick: function(button, event, options) {
-        console.log('You clicked My-Stocks');
+    onTransactionsButtonClick: function(button, event, options) {
+        console.log('You clicked Transactions');
+        var mainPanel = this.getMainPanel();
+        var newTab = mainPanel.add({
+            xtype: 'transactionList',
+            closable: true,
+            iconCls: 'transactionList',
+            title: 'Transactions'
+        });
+        mainPanel.setActiveTab(newTab);
+    },
 
+    onMyStocksButtonClick: function(button, event, options) {
         var mainPanel = this.getMainPanel();
         var newTab = mainPanel.add({
             xtype: 'stockList',
@@ -41,7 +55,6 @@ Ext.define('Finance.controller.Menu', {
             iconCls: 'stockList',
             title: 'Your Stocks'
         });
-
         mainPanel.setActiveTab(newTab);
     },
 

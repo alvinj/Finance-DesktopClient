@@ -37,7 +37,8 @@ Ext.application({
         'Ext.ux.grid.FiltersFeature',
         'Finance.store.Stocks',           // put here so it's loaded asynchronously
         'Finance.view.StockForm',
-        'Finance.store.Transactions'
+        'Finance.store.Transactions',
+        'Finance.view.TransactionForm'
     ],
 
     views: [

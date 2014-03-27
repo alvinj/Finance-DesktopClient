@@ -41,31 +41,25 @@ Ext.define('Finance.view.TransactionList', {
             dataIndex: 'notes',
             text: 'Notes'
         }
-    ]
+    ],
 
-    // dockedItems: [
-    //     {
-    //         xtype: 'toolbar',
-    //         flex: 1,
-    //         dock: 'top',
-    //         items: [
-    //             {
-    //                 // the controller automagically picks up the button click event
-    //                 // by referencing the '#add' class (or possibly the 'add' itemId)
-    //                 xtype: 'button',
-    //                 text: 'Add',
-    //                 itemId: 'add',
-    //                 iconCls: 'add'
-    //             },
-    //             {
-    //                 xtype: 'button',
-    //                 text: 'Delete',
-    //                 itemId: 'delete',
-    //                 iconCls: 'delete'
-    //             }
-    //         ]
-    //     }
-    // ]
+    dockedItems: [
+        {
+            xtype: 'toolbar',
+            flex: 1,
+            dock: 'top',
+            items: [
+                {
+                    // the controller automagically picks up the button click event
+                    // by referencing the '#add' class (or possibly the 'add' itemId)
+                    xtype: 'button',
+                    text: 'Add',
+                    itemId: 'add',
+                    iconCls: 'add'
+                }
+            ]
+        }
+    ]
 
 });
 

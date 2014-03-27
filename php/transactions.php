@@ -1,17 +1,18 @@
 <?php
 
-# send a json reply back to the sencha client
-header('Content-type: text/html');
-echo json_encode(array(
-    "id" => 1,
-    "symbol" => "AAPL",
-    "type" => "B",
-    "quantity" => 100,
-    "price" => 525.00,
-    "datetime" => "Wed, 3/26/2014 22:15:00",
-    "notes" => "I bought at this price because ..."
-));
+# a pass-thru script to call my Play server-side code.
+
+# the url to access
+$url = 'http://localhost:8080/transactions';
+
+# this is all boilerplate
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$data = curl_exec($ch);
+#$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+echo $data;
 
 ?>
-
-

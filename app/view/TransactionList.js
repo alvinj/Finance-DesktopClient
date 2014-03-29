@@ -56,6 +56,12 @@ Ext.define('Finance.view.TransactionList', {
                     text: 'Add',
                     itemId: 'add',
                     iconCls: 'add'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Delete',
+                    itemId: 'delete',
+                    iconCls: 'delete'
                 }
             ]
         }

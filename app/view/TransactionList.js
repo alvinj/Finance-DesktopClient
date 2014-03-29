@@ -7,39 +7,52 @@ Ext.define('Finance.view.TransactionList', {
 
     columns: [
         {
+            text: 'ID',
             width: 50,
-            dataIndex: 'id',
-            text: 'ID'
+            dataIndex: 'id'
         },
         {
+            text: 'Symbol',
             width: 100,
-            dataIndex: 'symbol',
-            text: 'Symbol'
+            dataIndex: 'symbol'
         },
         {
+            text: 'Type',
             width: 50,
-            dataIndex: 'ttype',
-            text: 'Type'
+            dataIndex: 'ttype'
         },
         {
+            text: 'Qty',
             width: 100,
             dataIndex: 'quantity',
-            text: 'Qty'
+            xtype: 'numbercolumn', 
+            format: '0,000',
+            align: 'right'
         },
         {
+            text: 'Price',
             width: 100,
             dataIndex: 'price',
-            text: 'Price'
+            xtype: 'numbercolumn', 
+            format: '0.00',
+            align: 'right'
         },
+        // {
+        //     width: 150,
+        //     dataIndex: 'datetime',
+        //     text: 'Date/Time'
+        // },
         {
+            text: 'Date',
             width: 150,
             dataIndex: 'datetime',
-            text: 'Date/Time'
+            xtype: 'datecolumn',
+            format: 'Y-m-d'
         },
         {
+            text: 'Notes',
             width: 250,
-            dataIndex: 'notes',
-            text: 'Notes'
+            dataIndex: 'notes'
         }
     ],
 

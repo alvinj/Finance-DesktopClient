@@ -47,7 +47,8 @@ Ext.define('Finance.view.TransactionList', {
             width: 150,
             dataIndex: 'datetime',
             xtype: 'datecolumn',
-            format: 'Y-m-d'
+            format: 'Y-m-d',
+            align: 'right'
         },
         {
             text: 'Notes',

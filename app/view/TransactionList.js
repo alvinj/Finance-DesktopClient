@@ -18,7 +18,7 @@ Ext.define('Finance.view.TransactionList', {
         },
         {
             width: 50,
-            dataIndex: 'type',
+            dataIndex: 'ttype',
             text: 'Type'
         },
         {

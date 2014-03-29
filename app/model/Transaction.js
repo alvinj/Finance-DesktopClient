@@ -7,7 +7,7 @@ Ext.define('Finance.model.Transaction', {
     fields: [
         { name: 'id' },
         { name: 'symbol' },
-        { name: 'type' },
+        { name: 'ttype' },
         { name: 'quantity' },
         { name: 'price' },
         { name: 'datetime' },

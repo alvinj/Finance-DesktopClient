@@ -24,6 +24,7 @@ Ext.application({
         'Ext.menu.Menu',
         'Ext.form.Panel',
         'Ext.form.Label',
+        'Ext.form.RadioGroup',
         'Ext.data.proxy.Ajax',
         'Ext.form.FieldSet',
         'Ext.form.field.Hidden',

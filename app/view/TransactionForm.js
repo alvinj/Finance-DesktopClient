@@ -41,12 +41,34 @@ Ext.define('Finance.view.TransactionForm', {
                     maxLength: 10,
                     maskRe: /([a-zA-Z0-9]+)$/   // only allow letters and numbers, no spaces
                 },
+                // {
+                //     fieldLabel: 'Type (B/S)',
+                //     name: 'ttype',
+                //     itemId: 'ttype',
+                //     allowBlank: false,
+                //     maxLength: 1       //TODO convert this field to a radio button
+                // },
                 {
-                    fieldLabel: 'Type (B/S)',
-                    name: 'ttype',
+                    fieldLabel: 'Type',
                     itemId: 'ttype',
-                    allowBlank: false,
-                    maxLength: 1       //TODO convert this field to a radio button
+                    xtype: 'radiogroup',
+                    // horizontal: true,   //this works, but separates the buttons too much
+                    layout: 'hbox',
+                    // defaults: {     
+                    //     flex: 1
+                    // },
+                    items: [{
+                        boxLabel: 'Buy',
+                        inputValue: 'B',
+                        name: 'ttype',
+                        checked: true,
+                        flex: 1
+                    }, {
+                        boxLabel: 'Sell',
+                        inputValue: 'S',
+                        name: 'ttype',
+                        flex: 4
+                    }]
                 },
                 {
                     fieldLabel: 'Qty',

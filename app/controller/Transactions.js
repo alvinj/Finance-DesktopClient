@@ -31,6 +31,9 @@ Ext.define('Finance.controller.Transactions', {
             },
             'transactionform button#save': { //TransactionForm save button
                 click: this.onAddTransactionFormSaveClicked
+            },
+            'transactionform textfield#symbol': { //handle blur event on the symbol textfield
+                blur: this.onAddTransactionFormSymbolFieldBlur
             }
         });
 
@@ -43,6 +46,10 @@ Ext.define('Finance.controller.Transactions', {
      * Transaction Form
      * ----------------
      */
+    onAddTransactionFormSymbolFieldBlur: function(textfield, event, options) {
+        textfield.setValue(textfield.getValue().toUpperCase());
+    },
+
     onAddTransactionButtonClicked: function(button, event, options) {
         var win = Ext.create('Finance.view.TransactionForm');
         win.setTitle('Add Transaction');

@@ -3,10 +3,11 @@ Ext.define('Finance.model.Transaction', {
 
     idProperty: 'id',
 
+    // `type` is buy or sell
     fields: [
         { name: 'id' },
         { name: 'symbol' },
-        { name: 'type' },    // buy or sell
+        { name: 'type' },
         { name: 'quantity' },
         { name: 'price' },
         { name: 'datetime' },

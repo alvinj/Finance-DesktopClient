@@ -43,15 +43,6 @@ Ext.define('Finance.view.menu.Menu', {
                 itemId: 'research',
                 iconCls: 'research',
                 text: 'Research'
-            },
-            {
-                html: '<a href="#">Item 1</a>'
-            },
-            {
-                html: '<a href="#">Item 2</a>'
-            },
-            {
-                html: '<a href="#">Item 3</a>'
             }
         ];
 

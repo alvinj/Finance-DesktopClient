@@ -97,7 +97,7 @@ Ext.define('Finance.view.TransactionForm', {
                     name: 'notes',
                     itemId: 'notes',
                     allowBlank: true
-                },
+                }
             ]
         }
     ],

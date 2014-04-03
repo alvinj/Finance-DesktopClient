@@ -59,8 +59,41 @@ Ext.define('Finance.controller.ResearchLinks', {
         button.up('window').close();
     },
 
+    // the 'save' button click event on the 'add form'
     onAddResearchLinkFormSaveClicked: function(button, event, options) {
-        // TODO
+        var win = button.up('window'),
+            formPanel = win.down('form'),
+            store = this.getResearchLinksList().getStore();
+
+        if (formPanel.getForm().isValid()) {
+            formPanel.getForm().submit({
+                clientValidation: true,
+                url: 'php/researchlinksave.php',
+                success: function(form, action) {
+                    var result = action.result;
+                    console.log(result);
+                    if (result.success) {
+                        Packt.util.Alert.msg('Success!', 'The link was saved.');
+                        store.load();
+                        win.close();                      
+                    } else {
+                        Packt.util.Util.showErrorMsg(result.msg);
+                    }
+                },
+                failure: function(form, action) {
+                    switch (action.failureType) {
+                        case Ext.form.action.Action.CLIENT_INVALID:
+                            Ext.Msg.alert('Failure', 'Form fields may not be submitted with invalid values');
+                            break;
+                        case Ext.form.action.Action.CONNECT_FAILURE:
+                            Ext.Msg.alert('Failure', 'Ajax communication failed');
+                            break;
+                        case Ext.form.action.Action.SERVER_INVALID:
+                            Ext.Msg.alert('Failure', action.result.msg);
+                   }
+                }
+            });
+        }
     },
 
 
@@ -69,6 +102,12 @@ Ext.define('Finance.controller.ResearchLinks', {
     }
 
 });
+
+
+
+
+
+
 
 
 

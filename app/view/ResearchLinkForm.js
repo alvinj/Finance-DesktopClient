@@ -47,7 +47,9 @@ Ext.define('Finance.view.ResearchLinkForm', {
                     name: 'url',
                     itemId: 'url',
                     allowBlank: false,
-                    maxLength: 10
+                    vtype: 'url',
+                    maxLength: 200
+                    // url vtype: http://docs-origin.sencha.com/extjs/4.0.1/#!/api/Ext.form.field.VTypes-method-url
                 },
                 {
                     fieldLabel: 'Notes',

@@ -20,7 +20,6 @@ Ext.application({
     extend: 'Finance.Application',
     
     requires: [
-    //     'Finance.view.Login'
         'Ext.menu.Menu',
         'Ext.form.Panel',
         'Ext.form.Label',
@@ -30,6 +29,7 @@ Ext.application({
         'Ext.form.field.Hidden',
         'Ext.form.field.ComboBox',
         'Ext.form.field.File',
+        'Ext.grid.column.Template',
         'Ext.grid.plugin.CellEditing',
         'Ext.grid.column.Date',
         'Ext.grid.column.Action',
@@ -39,7 +39,8 @@ Ext.application({
         'Finance.store.Stocks',           // put here so it's loaded asynchronously
         'Finance.view.StockForm',
         'Finance.store.Transactions',
-        'Finance.view.TransactionForm'
+        'Finance.view.TransactionForm',
+        'Finance.store.ResearchLinks'
     ],
 
     views: [
@@ -56,7 +57,8 @@ Ext.application({
         'Login',
         'Menu',
         'Stocks',
-        'Transactions'
+        'Transactions',
+        'ResearchLinks'
         // 'Main'
         // 'TranslationManager',
         // 'security.Groups',

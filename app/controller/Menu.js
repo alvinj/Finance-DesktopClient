@@ -3,7 +3,8 @@ Ext.define('Finance.controller.Menu', {
 
     views: [
         'menu.Menu',
-        'StockList'
+        'StockList',
+        'ResearchLinksList'
     ],
 
     refs: [
@@ -58,13 +59,20 @@ Ext.define('Finance.controller.Menu', {
         mainPanel.setActiveTab(newTab);
     },
 
+    onResearchButtonClick: function(button, event, options) {
+        var mainPanel = this.getMainPanel();
+        var newTab = mainPanel.add({
+            xtype: 'researchLinksList',
+            closable: true,
+            iconCls: 'researchLinksList',
+            title: 'Research Info'
+        });
+        mainPanel.setActiveTab(newTab);
+    },
+
     onWatchListButtonClick: function(button, event, options) {
         console.log('You clicked Watch-List');
     },
-
-    onResearchButtonClick: function(button, event, options) {
-        console.log('You clicked Research');
-    }
 
 });
 

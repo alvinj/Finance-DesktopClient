@@ -4,7 +4,8 @@ Ext.define('Finance.controller.Menu', {
     views: [
         'menu.Menu',
         'StockList',
-        'ResearchLinksList'
+        'ResearchLinksList',
+        'ReportPanel'
     ],
 
     refs: [
@@ -32,8 +33,23 @@ Ext.define('Finance.controller.Menu', {
 
             "basic-panels button#research": {
                 click: this.onResearchButtonClick
+            },
+
+            "basic-panels button#reports": {
+                click: this.onReportsButtonClick
             }
         });
+    },
+
+    onReportsButtonClick: function(button, event, options) {
+        var mainPanel = this.getMainPanel();
+        var newTab = mainPanel.add({
+            xtype: 'reportpanel',
+            closable: true,
+            iconCls: 'reportpanel',
+            title: 'Reports'
+        });
+        mainPanel.setActiveTab(newTab);
     },
 
     onTransactionsButtonClick: function(button, event, options) {

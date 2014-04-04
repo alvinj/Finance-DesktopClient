@@ -35,6 +35,9 @@ Ext.define('Finance.controller.ResearchLinks', {
             'researchLinkForm button#save': { //ResearchLinkForm save button
                 click: this.onAddResearchLinkFormSaveClicked
             },
+            'researchLinkForm textfield': {
+                specialkey: this.onTextfieldSpecialKey
+            },
             'researchLinkForm textfield#symbol': { //handle blur event on the symbol textfield
                 blur: this.onAddResearchLinkFormSymbolFieldBlur
             }
@@ -60,6 +63,15 @@ Ext.define('Finance.controller.ResearchLinks', {
 
     onAddResearchLinkFormCancelClicked: function(button, event, options) {
         button.up('window').close();
+    },
+
+    // handle 'Enter' key in textfields of the form.
+    // not really useful on this form, but i wanted to test it.
+    onTextfieldSpecialKey: function(field, event, options) {
+        if (event.getKey() == event.ENTER) {
+            var saveBtn = field.up('researchLinkForm').down('button#save');
+            saveBtn.fireEvent('click', saveBtn, event, options);
+        }
     },
 
     // the 'save' button click event on the 'add form'

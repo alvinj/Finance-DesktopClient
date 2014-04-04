@@ -26,6 +26,9 @@ Ext.define('Finance.controller.ResearchLinks', {
             'researchLinksList button#add': {
                 click: this.onAddResearchLinkButtonClicked
             },
+            'researchLinksList button#delete': {
+                click: this.onDeleteResearchLinkButtonClicked
+            },
             'researchLinkForm button#cancel': { //ResearchLinkForm cancel button
                 click: this.onAddResearchLinkFormCancelClicked
             },
@@ -96,6 +99,52 @@ Ext.define('Finance.controller.ResearchLinks', {
         }
     },
 
+    // TODO this is almost all boilerplate code; refactor into a reusable function
+    // unique things are: getResearchLinksList, url, messages
+    onDeleteResearchLinkButtonClicked: function (button, e, options) {
+        var grid = this.getResearchLinksList(),
+            record = grid.getSelectionModel().getSelection(), 
+            store = grid.getStore();
+
+        if (store.getCount() >= 1 && record[0]) {
+            var idToDelete = record[0].get('id');
+            Ext.Msg.show({
+                 title:'Delete?',
+                 msg: 'Are you sure you want to delete ID(' + idToDelete + ')?',
+                 buttons: Ext.Msg.YESNO,
+                 icon: Ext.Msg.QUESTION,
+                 fn: function (buttonId){
+                    if (buttonId == 'yes'){
+                        Ext.Ajax.request({
+                            url: 'php/deleteresearchlink.php',
+                            params: {
+                                id: idToDelete
+                            },
+                            success: function(conn, response, options, eOpts) {
+                                var result = Packt.util.Util.decodeJSON(conn.responseText);
+                                if (result.success) {
+                                    Packt.util.Alert.msg('Success', 'The link was deleted.');
+                                    store.load();
+                                } else {
+                                    Packt.util.Util.showErrorMsg(conn.responseText);
+                                }
+                            },
+                            failure: function(conn, response, options, eOpts) {
+                                Packt.util.Util.showErrorMsg(conn.responseText);
+                            }
+                        });
+                    }
+                 }
+            });
+        } else {
+            Ext.Msg.show({
+                title: 'Dude',
+                msg: 'Dude, you need to select at least one link.',
+                buttons: Ext.Msg.OK,
+                icon: Ext.Msg.WARNING
+            });
+        }
+    },
 
     onRender: function(component, options) {
         component.getStore().load();

@@ -65,7 +65,7 @@ Ext.define('Finance.controller.Menu', {
             xtype: 'researchLinksList',
             closable: true,
             iconCls: 'researchLinksList',
-            title: 'Research Info'
+            title: 'Research'
         });
         mainPanel.setActiveTab(newTab);
     },

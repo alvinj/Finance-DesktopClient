@@ -2,7 +2,7 @@ Ext.define('Finance.controller.Stocks', {
     extend: 'Ext.app.Controller',
 
     // requires: [
-    //     'Packt.util.Util'
+    //     'VP.util.Utils'
     // ],
 
     views: [
@@ -171,16 +171,7 @@ Ext.define('Finance.controller.Stocks', {
                 icon: Ext.Msg.WARNING
             });
         }
-    },
-
-    dumpObject: function(obj) {
-        var output, property;
-        for (property in obj) {
-            output += property + ': ' + obj[property] + '; ';
-        }
-        console.log(output);
     }
-
 
 });
 

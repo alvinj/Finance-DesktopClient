@@ -1,6 +1,10 @@
 Ext.define('Finance.controller.Transactions', {
     extend: 'Ext.app.Controller',
 
+    requires: [
+        'VP.util.Utils'
+    ],
+
     views: [
         'TransactionList',
     ],
@@ -55,6 +59,7 @@ Ext.define('Finance.controller.Transactions', {
 
     onAddTransactionButtonClicked: function(button, event, options) {
         var win = Ext.create('Finance.view.TransactionForm');
+        //VP.util.Utils.dumpObject(win);
         win.setTitle('Add Transaction');
         win.show();
     },
@@ -148,14 +153,6 @@ Ext.define('Finance.controller.Transactions', {
 
     onRender: function(component, options) {
         component.getStore().load();
-    },
-
-    dumpObject: function(obj) {
-        var output, property;
-        for (property in obj) {
-            output += property + ': ' + obj[property] + '; ';
-        }
-        console.log(output);
     }
 
 });

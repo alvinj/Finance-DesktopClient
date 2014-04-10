@@ -11,7 +11,8 @@ Ext.Loader.setConfig({
         'Packt.util': 'app/util',
         'Packt.model': 'app/model',
         'Packt.store': 'app/store',
-        'Packt.view': 'app/view'
+        'Packt.view': 'app/view',
+        'VP.util': 'app/util/VP'
     }
 });
 

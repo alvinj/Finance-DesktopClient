@@ -91,19 +91,22 @@ Ext.define('Finance.controller.Stocks', {
 
     // add a stock
     onAddStockFormSaveClicked: function(button, event, options) {
-        var win = button.up('window'),
-        formPanel = win.down('form'),
-        store = this.getStockList().getStore();
-
+        var win = button.up('window');
+        var formPanel = win.down('form');
+        var store = this.getStockList().getStore();
+        // form is valid, send the data
         if (formPanel.getForm().isValid()) {
-            formPanel.getForm().submit({
-                clientValidation: true,
-                url: 'php/stockssave.php',
-                success: function(form, action) {
-                    var result = action.result;
-                    console.log(result);
+            Ext.Ajax.request({
+                url: 'server/stocks/add',
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                params : Ext.JSON.encode(formPanel.getValues()),
 
+                success: function(conn, response, options, eOpts) {
+                    var result = Packt.util.Util.decodeJSON(conn.responseText);
+                    console.log(result);
                     if (result.success) {
+                        console.log('*** STOCK WAS ADDED ***');
                         Packt.util.Alert.msg('Success!', 'Stock was saved.');
                         store.load();
                         win.close();                      
@@ -143,7 +146,8 @@ Ext.define('Finance.controller.Stocks', {
                  fn: function (buttonId){
                     if (buttonId == 'yes'){
                         Ext.Ajax.request({
-                            url: 'php/deletestock.php',
+                            // TODO
+                            url: 'server/stocks/delete',
                             params: {
                                 id: idToDelete
                             },

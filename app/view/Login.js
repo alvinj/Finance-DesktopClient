@@ -39,7 +39,7 @@ Ext.define('Finance.view.Login', {
                     name: 'user',
                     fieldLabel: 'User',
                     maxLength: 25,
-                    value: 'loiane'
+                    value: 'alvin'
                 },
                 {
                     inputType: 'password',
@@ -48,7 +48,7 @@ Ext.define('Finance.view.Login', {
                     // enableKeyEvents: true,
                     id: 'password',
                     maxLength: 15,
-                    value: '123456',
+                    value: 'alvin',
                     //vtype: 'customPass',
                     msgTarget: 'side'
                 }

@@ -59,42 +59,37 @@ Ext.define('Finance.controller.Login', {
             pass = formPanel.down('textfield[name=password]').getValue();   
 
         if (formPanel.getForm().isValid()) {
-
-            pass = Packt.util.MD5.encode(pass); 
-            
+            // pass = Packt.util.MD5.encode(pass);
             Ext.get(login.getEl()).mask("Authenticating... Please wait...", 'loading');
-
             Ext.Ajax.request({
                 //
                 // TODO fix this
                 //
-                url: 'php/login.php',
-                params: {
-                    user: user,
-                    password: pass
+                // jsonData: Ext.util.JSON.encode(dataObj)
+                //
+                url: 'server/login',
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                jsonData: {
+                    'username': user,
+                    'password': pass
                 },
                 success: function(conn, response, options, eOpts) {
-                    
                     Ext.get(login.getEl()).unmask();
-
                     var result = Packt.util.Util.decodeJSON(conn.responseText);
-
                     if (result.success) {
-
                         //Packt.util.Alert.msg('Success!', 'User Authenticated.');
-                        
                         login.close();
                         Ext.create('Finance.view.MyViewport');
                         Packt.util.SessionMonitor.start();
-
                     } else {
+                        // TODO get the 'msg' from the json and display it
                         Packt.util.Util.showErrorMsg(conn.responseText);
                     }
                 },
                 failure: function(conn, response, options, eOpts) {
-
                     Ext.get(login.getEl()).unmask();
-                
+                    // TODO get the 'msg' from the json and display it
                     Packt.util.Util.showErrorMsg(conn.responseText);
                 }
             });

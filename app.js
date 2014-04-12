@@ -41,7 +41,10 @@ Ext.application({
         'Finance.view.StockForm',
         'Finance.store.Transactions',
         'Finance.view.TransactionForm',
-        'Finance.store.ResearchLinks'
+        'Finance.store.ResearchLinks',
+        'Ext.chart.series.Column',
+        'Ext.chart.axis.Numeric',
+        'Ext.chart.axis.Category'
     ],
 
     views: [
@@ -59,7 +62,8 @@ Ext.application({
         'Menu',
         'Stocks',
         'Transactions',
-        'ResearchLinks'
+        'ResearchLinks',
+        'Reports'
         // 'Main'
         // 'TranslationManager',
         // 'security.Groups',

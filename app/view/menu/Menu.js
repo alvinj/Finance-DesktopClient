@@ -43,6 +43,12 @@ Ext.define('Finance.view.menu.Menu', {
                 itemId: 'research',
                 iconCls: 'research',
                 text: 'Research'
+            },
+            {
+                xtype: 'button',
+                itemId: 'reports',
+                iconCls: 'reports',
+                text: 'Reports'
             }
         ];
 

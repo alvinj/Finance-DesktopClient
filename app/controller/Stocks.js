@@ -121,10 +121,9 @@ Ext.define('Finance.controller.Stocks', {
 
     // delete one or more stocks
     onDeleteStockButtonClicked: function (button, e, options) {
-        var grid = this.getStockList(),
-            record = grid.getSelectionModel().getSelection(), 
-            store = grid.getStore();
-
+        var grid = this.getStockList();
+        var record = grid.getSelectionModel().getSelection();
+        var store = grid.getStore();
         if (store.getCount() >= 1 && record[0]) {
             var idToDelete = record[0].get('id');
             Ext.Msg.show({
@@ -135,11 +134,8 @@ Ext.define('Finance.controller.Stocks', {
                  fn: function (buttonId){
                     if (buttonId == 'yes'){
                         Ext.Ajax.request({
-                            // TODO
-                            url: 'server/stocks/delete',
-                            params: {
-                                id: idToDelete
-                            },
+                            url: 'server/stocks/' + idToDelete + '/delete',
+                            method: 'GET',
                             success: function(conn, response, options, eOpts) {
                                 var result = Packt.util.Util.decodeJSON(conn.responseText);
                                 if (result.success) {

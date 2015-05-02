@@ -12,8 +12,25 @@ Running the Desktop Client App
 I run the Desktop Client app under MAMP on Mac OS X, which means:
 
 * My root directory is at _/Applications/MAMP/htdocs/finance_
+* I add "finance" to the /etc/hosts file (127.0.0.1)
 * I run the MAMP server on port 8888
-* The URL to access the application is _http://localhost:8888/finance/_
+* The URL to access the application is _http://finance:8888/_
+* The MAMP/Apache configuration file looks like this:
+
+````
+<VirtualHost 127.0.0.1>
+    ServerName finance
+    ProxyPass /server http://localhost:8080
+    ProxyPassReverse /server http://localhost:8080
+    DocumentRoot /Applications/MAMP/htdocs/finance
+    <Directory /Applications/MAMP/htdocs/finance>
+        DirectoryIndex index.php index.html
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+````
 
 
 Server Requests

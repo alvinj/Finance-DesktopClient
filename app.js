@@ -30,6 +30,7 @@ Ext.application({
         'Ext.form.field.Hidden',
         'Ext.form.field.ComboBox',
         'Ext.form.field.File',
+        'Ext.grid.column.Number',
         'Ext.grid.column.Template',
         'Ext.grid.plugin.CellEditing',
         'Ext.grid.column.Date',
